@@ -1,0 +1,9 @@
+*.npz binary
+*.keras binary
+# Preserve the exact reference bytes so recorded SHA-256 hashes stay valid.
+qec_dataset/** -text
+cnn_results/** -text
+evaluate_trajectory_cnn.py -text
+requirements-reproduce.txt -text
+# Python's CSV writer uses standard CRLF record endings.
+*.csv whitespace=cr-at-eol

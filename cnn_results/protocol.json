@@ -1,0 +1,17 @@
+{
+  "seed": 42,
+  "epochs": 10,
+  "batch_size": 32,
+  "optimizer": "Adam",
+  "learning_rate": 0.001,
+  "loss": "SparseCategoricalCrossentropy(from_logits=True)",
+  "padding": "same on both convolutions; valid on both pools",
+  "checkpoint": "final epoch 10, no early stopping or model selection",
+  "class_weighting": false,
+  "normalization": "none; input probabilities unchanged",
+  "deterministic_ops": true,
+  "intra_op_threads": 2,
+  "inter_op_threads": 1,
+  "model_origin": "reconstructed from manuscript architecture; original training code unavailable",
+  "test_use": "evaluation only after fixed training protocol"
+}

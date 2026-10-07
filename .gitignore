@@ -1,0 +1,9 @@
+# Python bytecode and local environments
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+
+# New reproducibility runs (the reference data/results are tracked)
+/reproduced_results/
+/qec_dataset_regenerated/

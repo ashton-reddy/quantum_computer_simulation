@@ -1,0 +1,208 @@
+{
+  "dataset_kind": "fresh_simulation_not_original_paper_data",
+  "config": {
+    "trajectories": 15,
+    "cycles": 400,
+    "shots": 4000,
+    "seed": 7,
+    "split_seed": 42,
+    "window": 8,
+    "threshold": 0.08
+  },
+  "noise": {
+    "p1": 0.001,
+    "base_p2": 0.01,
+    "base_pm": 0.02,
+    "slope_p2": 2e-05,
+    "slope_pm": 1e-05,
+    "rw_sigma_p2": 0.0002,
+    "rw_sigma_pm": 0.0001,
+    "reset_drift_each_trajectory": true
+  },
+  "simulation_method": "density_matrix",
+  "raw_cycles": 6000,
+  "windowed_samples": 5880,
+  "probability_order": [
+    "00",
+    "01",
+    "10",
+    "11"
+  ],
+  "label": "1 if next cycle's observed nonzero-syndrome rate is > threshold, else 0",
+  "trajectories": [
+    {
+      "trajectory_id": 0,
+      "noise_seed": 7,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 1,
+      "noise_seed": 408,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 2,
+      "noise_seed": 809,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 3,
+      "noise_seed": 1210,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 4,
+      "noise_seed": 1611,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 5,
+      "noise_seed": 2012,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 6,
+      "noise_seed": 2413,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 7,
+      "noise_seed": 2814,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 8,
+      "noise_seed": 3215,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 9,
+      "noise_seed": 3616,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 10,
+      "noise_seed": 4017,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 11,
+      "noise_seed": 4418,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 12,
+      "noise_seed": 4819,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 13,
+      "noise_seed": 5220,
+      "cycles": 400
+    },
+    {
+      "trajectory_id": 14,
+      "noise_seed": 5621,
+      "cycles": 400
+    }
+  ],
+  "splits": {
+    "train": {
+      "trajectory_ids": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        10,
+        14
+      ],
+      "windows": 3528,
+      "class_counts": [
+        878,
+        2650
+      ],
+      "positive_fraction": 0.7511337868480725,
+      "X_shape": [
+        3528,
+        8,
+        4,
+        1
+      ]
+    },
+    "val": {
+      "trajectory_ids": [
+        1,
+        12,
+        13
+      ],
+      "windows": 1176,
+      "class_counts": [
+        327,
+        849
+      ],
+      "positive_fraction": 0.7219387755102041,
+      "X_shape": [
+        1176,
+        8,
+        4,
+        1
+      ]
+    },
+    "test": {
+      "trajectory_ids": [
+        0,
+        9,
+        11
+      ],
+      "windows": 1176,
+      "class_counts": [
+        530,
+        646
+      ],
+      "positive_fraction": 0.5493197278911565,
+      "X_shape": [
+        1176,
+        8,
+        4,
+        1
+      ]
+    }
+  },
+  "training_majority_class": 1,
+  "majority_baseline_test_accuracy": 0.5493197278911565,
+  "model_trained": false,
+  "limitations": [
+    "Fresh 15 x 400-cycle run; original 5,765-cycle dataset was not available.",
+    "Each cycle prepares a fresh state; temporal dependence comes from noise drift.",
+    "Thresholded syndrome rate is a proxy, not a decoded logical-failure measurement.",
+    "Only depolarizing gate noise and symmetric readout noise are simulated.",
+    "Grover benchmark rows are excluded from this QEC dataset.",
+    "Only three independent test trajectories; windows within a split overlap.",
+    "No CNN evaluation is included; the paper's 98.3% does not apply to these splits."
+  ],
+  "versions": {
+    "qiskit": "2.5.2",
+    "qiskit-aer": "0.17.2",
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0"
+  },
+  "python_version": "3.12.14",
+  "source_sha256": {
+    "generate_qec_dataset.py": "99248f1d2b8c454249c6d1d434094d398531efdde32f58ac760252d9a3fdd1a7",
+    "qec_trajectory_split.py": "a2f72503b157506ccaaf07c6b4f3022d7e814543eacc6338ee078341dd02a0e4",
+    "src/qexp/core/noise.py": "40e77e6b7a1efa3f8013545f51aaf54d7e43085902bfcc5990d5471f24115045",
+    "src/qexp/qec/bitflip_syndrome.py": "f15286743f03e4e0b6f481ffc3815515183bdbede1a278de8e900f70f217b8ef"
+  },
+  "elapsed_seconds": 78.1700024339998,
+  "file_sha256": {
+    "cycles.csv": "adee70961b2eb1d58d1ba9535f4226894cedc02abe18685ed77c9ca9707031a4",
+    "dataset.jsonl": "9ea0ed42ae3e63257e175913c26cd7afbe848e0dd8c9e7c66834d3d11d271ab0",
+    "test.npz": "b2f1b2ebda34087667a7a7158e41ad4ea2c090393eba4d4a6c4eb3388b3ae9dd",
+    "train.npz": "afafad877e5e2a38f8bde09ab99f38572a1a42f4eb439920c026d67b0fabfc95",
+    "val.npz": "c7b997d041139b05a5b5dafe7301e712ae0808ff3a6b52c74d659266eb13ce92",
+    "windows.csv": "4842945baafc4d863e3246940c235d14f695c680b98555849c554a634f1e6c39"
+  }
+}

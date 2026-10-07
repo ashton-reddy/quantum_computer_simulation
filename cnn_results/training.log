@@ -1,0 +1,458 @@
+/root/.local/lib/python3.12/site-packages/keras/src/trainers/epoch_iterator.py:74: UserWarning: `shuffle=True` was passed, but will be ignored since the data `x` was provided as a tf.data.Dataset. The Dataset is expected to already be shuffled (via `.shuffle(buffer_size)`).
+  self.data_adapter = data_adapters.get_data_adapter(
+Epoch 1/10
+111/111 - 1s - 12ms/step - accuracy: 0.7472 - loss: 0.5686 - val_accuracy: 0.7219 - val_loss: 0.5825
+Epoch 2/10
+111/111 - 0s - 4ms/step - accuracy: 0.7571 - loss: 0.5031 - val_accuracy: 0.7219 - val_loss: 0.4654
+Epoch 3/10
+111/111 - 0s - 3ms/step - accuracy: 0.8512 - loss: 0.3234 - val_accuracy: 0.7840 - val_loss: 0.4233
+Epoch 4/10
+111/111 - 1s - 5ms/step - accuracy: 0.8656 - loss: 0.2903 - val_accuracy: 0.8529 - val_loss: 0.3356
+Epoch 5/10
+111/111 - 1s - 7ms/step - accuracy: 0.8676 - loss: 0.2723 - val_accuracy: 0.7959 - val_loss: 0.3836
+Epoch 6/10
+111/111 - 0s - 4ms/step - accuracy: 0.8812 - loss: 0.2615 - val_accuracy: 0.8571 - val_loss: 0.3338
+Epoch 7/10
+111/111 - 1s - 5ms/step - accuracy: 0.8866 - loss: 0.2480 - val_accuracy: 0.8087 - val_loss: 0.4435
+Epoch 8/10
+111/111 - 0s - 4ms/step - accuracy: 0.8773 - loss: 0.2544 - val_accuracy: 0.8665 - val_loss: 0.3029
+Epoch 9/10
+111/111 - 1s - 5ms/step - accuracy: 0.8844 - loss: 0.2472 - val_accuracy: 0.8622 - val_loss: 0.3138
+Epoch 10/10
+111/111 - 0s - 4ms/step - accuracy: 0.8801 - loss: 0.2495 - val_accuracy: 0.8299 - val_loss: 0.3993
+{
+  "protocol": {
+    "seed": 42,
+    "epochs": 10,
+    "batch_size": 32,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "loss": "SparseCategoricalCrossentropy(from_logits=True)",
+    "padding": "same on both convolutions; valid on both pools",
+    "checkpoint": "final epoch 10, no early stopping or model selection",
+    "class_weighting": false,
+    "normalization": "none; input probabilities unchanged",
+    "deterministic_ops": true,
+    "intra_op_threads": 2,
+    "inter_op_threads": 1,
+    "model_origin": "reconstructed from manuscript architecture; original training code unavailable",
+    "test_use": "evaluation only after fixed training protocol"
+  },
+  "source_script_sha256": "b6426fbac44b15878fdd55e4c91a25dbc167bbe063c0a3ab45774b2c46810e01",
+  "dataset_manifest_sha256": "f92a9a688da9cfefed72429f5390117cc0cde694da786e1452d51931b8e9ed9a",
+  "versions": {
+    "tensorflow-cpu": "2.20.0",
+    "keras": "3.15.1",
+    "numpy": "2.3.5",
+    "scikit-learn": "1.8.0"
+  },
+  "python": "3.12.14",
+  "parameters": 45538,
+  "training_seconds": 5.818160597999849,
+  "test_windows": 1176,
+  "cnn": {
+    "accuracy": 0.8962585034013606,
+    "balanced_accuracy": 0.8871078918161108,
+    "confusion_matrix": [
+      [
+        421,
+        109
+      ],
+      [
+        13,
+        633
+      ]
+    ],
+    "classification_report": {
+      "No failure": {
+        "precision": 0.9700460829493087,
+        "recall": 0.7943396226415095,
+        "f1-score": 0.8734439834024896,
+        "support": 530.0
+      },
+      "Failure": {
+        "precision": 0.8530997304582211,
+        "recall": 0.9798761609907121,
+        "f1-score": 0.9121037463976945,
+        "support": 646.0
+      },
+      "accuracy": 0.8962585034013606,
+      "macro avg": {
+        "precision": 0.9115729067037649,
+        "recall": 0.8871078918161108,
+        "f1-score": 0.892773864900092,
+        "support": 1176.0
+      },
+      "weighted avg": {
+        "precision": 0.9058051444210412,
+        "recall": 0.8962585034013606,
+        "f1-score": 0.8946805538913521,
+        "support": 1176.0
+      }
+    },
+    "roc_auc": 0.9826041240726678,
+    "average_precision": 0.987318425831961
+  },
+  "training_majority_class": 1,
+  "majority_baseline": {
+    "accuracy": 0.5493197278911565,
+    "balanced_accuracy": 0.5,
+    "confusion_matrix": [
+      [
+        0,
+        530
+      ],
+      [
+        0,
+        646
+      ]
+    ],
+    "classification_report": {
+      "No failure": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 530.0
+      },
+      "Failure": {
+        "precision": 0.5493197278911565,
+        "recall": 1.0,
+        "f1-score": 0.7091108671789242,
+        "support": 646.0
+      },
+      "accuracy": 0.5493197278911565,
+      "macro avg": {
+        "precision": 0.27465986394557823,
+        "recall": 0.5,
+        "f1-score": 0.3545554335894621,
+        "support": 1176.0
+      },
+      "weighted avg": {
+        "precision": 0.30175216345041417,
+        "recall": 0.5493197278911565,
+        "f1-score": 0.3895285886033887,
+        "support": 1176.0
+      }
+    }
+  },
+  "persistence_baseline": {
+    "accuracy": 0.9124149659863946,
+    "balanced_accuracy": 0.91180851685262,
+    "confusion_matrix": [
+      [
+        480,
+        50
+      ],
+      [
+        53,
+        593
+      ]
+    ],
+    "classification_report": {
+      "No failure": {
+        "precision": 0.900562851782364,
+        "recall": 0.9056603773584906,
+        "f1-score": 0.90310442144873,
+        "support": 530.0
+      },
+      "Failure": {
+        "precision": 0.9222395023328149,
+        "recall": 0.9179566563467493,
+        "f1-score": 0.9200930954228084,
+        "support": 646.0
+      },
+      "accuracy": 0.9124149659863946,
+      "macro avg": {
+        "precision": 0.9114011770575894,
+        "recall": 0.91180851685262,
+        "f1-score": 0.9115987584357692,
+        "support": 1176.0
+      },
+      "weighted avg": {
+        "precision": 0.9124702635643295,
+        "recall": 0.9124149659863946,
+        "f1-score": 0.9124366352134023,
+        "support": 1176.0
+      }
+    }
+  },
+  "per_test_trajectory": [
+    {
+      "trajectory_id": 0,
+      "windows": 392,
+      "class_counts": [
+        356,
+        36
+      ],
+      "cnn": {
+        "accuracy": 0.8903061224489796,
+        "balanced_accuracy": 0.889669163545568,
+        "confusion_matrix": [
+          [
+            317,
+            39
+          ],
+          [
+            4,
+            32
+          ]
+        ],
+        "classification_report": {
+          "No failure": {
+            "precision": 0.9875389408099688,
+            "recall": 0.8904494382022472,
+            "f1-score": 0.9364844903988183,
+            "support": 356.0
+          },
+          "Failure": {
+            "precision": 0.4507042253521127,
+            "recall": 0.8888888888888888,
+            "f1-score": 0.5981308411214953,
+            "support": 36.0
+          },
+          "accuracy": 0.8903061224489796,
+          "macro avg": {
+            "precision": 0.7191215830810408,
+            "recall": 0.889669163545568,
+            "f1-score": 0.7673076657601567,
+            "support": 392.0
+          },
+          "weighted avg": {
+            "precision": 0.9382377934720024,
+            "recall": 0.8903061224489796,
+            "f1-score": 0.9054111960774315,
+            "support": 392.0
+          }
+        },
+        "roc_auc": 0.9288389513108615,
+        "average_precision": 0.5447469446166971
+      },
+      "persistence": {
+        "accuracy": 0.8954081632653061,
+        "balanced_accuracy": 0.6802434456928839,
+        "confusion_matrix": [
+          [
+            336,
+            20
+          ],
+          [
+            21,
+            15
+          ]
+        ],
+        "classification_report": {
+          "No failure": {
+            "precision": 0.9411764705882353,
+            "recall": 0.9438202247191011,
+            "f1-score": 0.9424964936886395,
+            "support": 356.0
+          },
+          "Failure": {
+            "precision": 0.42857142857142855,
+            "recall": 0.4166666666666667,
+            "f1-score": 0.4225352112676056,
+            "support": 36.0
+          },
+          "accuracy": 0.8954081632653061,
+          "macro avg": {
+            "precision": 0.6848739495798319,
+            "recall": 0.6802434456928839,
+            "f1-score": 0.6825158524781225,
+            "support": 392.0
+          },
+          "weighted avg": {
+            "precision": 0.8941004973417939,
+            "recall": 0.8954081632653061,
+            "f1-score": 0.8947449473438507,
+            "support": 392.0
+          }
+        }
+      }
+    },
+    {
+      "trajectory_id": 9,
+      "windows": 392,
+      "class_counts": [
+        48,
+        344
+      ],
+      "cnn": {
+        "accuracy": 0.9158163265306123,
+        "balanced_accuracy": 0.6831395348837209,
+        "confusion_matrix": [
+          [
+            18,
+            30
+          ],
+          [
+            3,
+            341
+          ]
+        ],
+        "classification_report": {
+          "No failure": {
+            "precision": 0.8571428571428571,
+            "recall": 0.375,
+            "f1-score": 0.5217391304347826,
+            "support": 48.0
+          },
+          "Failure": {
+            "precision": 0.9191374663072777,
+            "recall": 0.9912790697674418,
+            "f1-score": 0.9538461538461539,
+            "support": 344.0
+          },
+          "accuracy": 0.9158163265306123,
+          "macro avg": {
+            "precision": 0.8881401617250674,
+            "recall": 0.6831395348837209,
+            "f1-score": 0.7377926421404682,
+            "support": 392.0
+          },
+          "weighted avg": {
+            "precision": 0.9115462896748996,
+            "recall": 0.9158163265306123,
+            "f1-score": 0.9009350897549656,
+            "support": 392.0
+          }
+        },
+        "roc_auc": 0.9754118217054263,
+        "average_precision": 0.9966979648317058
+      },
+      "persistence": {
+        "accuracy": 0.9362244897959183,
+        "balanced_accuracy": 0.8561046511627908,
+        "confusion_matrix": [
+          [
+            36,
+            12
+          ],
+          [
+            13,
+            331
+          ]
+        ],
+        "classification_report": {
+          "No failure": {
+            "precision": 0.7346938775510204,
+            "recall": 0.75,
+            "f1-score": 0.7422680412371134,
+            "support": 48.0
+          },
+          "Failure": {
+            "precision": 0.9650145772594753,
+            "recall": 0.9622093023255814,
+            "f1-score": 0.9636098981077147,
+            "support": 344.0
+          },
+          "accuracy": 0.9362244897959183,
+          "macro avg": {
+            "precision": 0.8498542274052479,
+            "recall": 0.8561046511627908,
+            "f1-score": 0.8529389696724141,
+            "support": 392.0
+          },
+          "weighted avg": {
+            "precision": 0.936812042601297,
+            "recall": 0.9362244897959183,
+            "f1-score": 0.9365068135929472,
+            "support": 392.0
+          }
+        }
+      }
+    },
+    {
+      "trajectory_id": 11,
+      "windows": 392,
+      "class_counts": [
+        126,
+        266
+      ],
+      "cnn": {
+        "accuracy": 0.8826530612244898,
+        "balanced_accuracy": 0.8299916457811194,
+        "confusion_matrix": [
+          [
+            86,
+            40
+          ],
+          [
+            6,
+            260
+          ]
+        ],
+        "classification_report": {
+          "No failure": {
+            "precision": 0.9347826086956522,
+            "recall": 0.6825396825396826,
+            "f1-score": 0.7889908256880734,
+            "support": 126.0
+          },
+          "Failure": {
+            "precision": 0.8666666666666667,
+            "recall": 0.9774436090225563,
+            "f1-score": 0.9187279151943463,
+            "support": 266.0
+          },
+          "accuracy": 0.8826530612244898,
+          "macro avg": {
+            "precision": 0.9007246376811595,
+            "recall": 0.8299916457811194,
+            "f1-score": 0.8538593704412099,
+            "support": 392.0
+          },
+          "weighted avg": {
+            "precision": 0.888561076604555,
+            "recall": 0.8826530612244898,
+            "f1-score": 0.8770267078530443,
+            "support": 392.0
+          }
+        },
+        "roc_auc": 0.9754744002864302,
+        "average_precision": 0.9893611546201924
+      },
+      "persistence": {
+        "accuracy": 0.9056122448979592,
+        "balanced_accuracy": 0.8928571428571428,
+        "confusion_matrix": [
+          [
+            108,
+            18
+          ],
+          [
+            19,
+            247
+          ]
+        ],
+        "classification_report": {
+          "No failure": {
+            "precision": 0.8503937007874016,
+            "recall": 0.8571428571428571,
+            "f1-score": 0.8537549407114624,
+            "support": 126.0
+          },
+          "Failure": {
+            "precision": 0.9320754716981132,
+            "recall": 0.9285714285714286,
+            "f1-score": 0.9303201506591338,
+            "support": 266.0
+          },
+          "accuracy": 0.9056122448979592,
+          "macro avg": {
+            "precision": 0.8912345862427574,
+            "recall": 0.8928571428571428,
+            "f1-score": 0.892037545685298,
+            "support": 392.0
+          },
+          "weighted avg": {
+            "precision": 0.9058206167625273,
+            "recall": 0.9056122448979592,
+            "f1-score": 0.9057099046045252,
+            "support": 392.0
+          }
+        }
+      }
+    }
+  ],
+  "split_audit_passed": true
+}

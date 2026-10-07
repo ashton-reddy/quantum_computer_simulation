@@ -1,5 +1,66 @@
-# Quantum_Comupter_Simulation
-Simulated Quatum Computer for Research Experimentation
+# Quantum Computer Simulation
+Simulated quantum circuits for research experimentation.
+
+Repository: https://github.com/ashton-reddy/quantum_computer_simulation
+
+## Saved trajectory-held-out evaluation
+
+The reference dataset and completed CNN evaluation are committed here as ordinary
+files, including the binary NumPy arrays and Keras model. They are the exact
+artifacts used for the revised paper's 89.63% test-accuracy result.
+
+| Artifact | Location |
+| --- | --- |
+| Training and evaluation script | `evaluate_trajectory_cnn.py` |
+| Raw dataset | `qec_dataset/dataset.jsonl`, `qec_dataset/cycles.csv` |
+| Train / validation / test arrays | `qec_dataset/train.npz`, `qec_dataset/val.npz`, `qec_dataset/test.npz` |
+| Window-to-cycle mapping | `qec_dataset/windows.csv` |
+| Dataset settings, seeds and provenance | `qec_dataset/manifest.json`, `qec_dataset/provenance.json` |
+| Saved final model | `cnn_results/cnn_final.keras` |
+| Per-window predictions | `cnn_results/test_predictions.csv` |
+| Metrics, including baselines and per-trajectory results | `cnn_results/metrics.json` |
+| Training protocol and architecture | `cnn_results/protocol.json`, `cnn_results/architecture.json` |
+| Epoch history and execution log | `cnn_results/history.json`, `cnn_results/training.log` |
+| Recorded package versions | `requirements-reproduce.txt` |
+| Artifact integrity hashes | `artifact_sha256.json` |
+
+The CNN achieved **89.63% accuracy** and **88.71% balanced accuracy** on 1,176
+windows from three held-out trajectories. The training-majority baseline achieved
+54.93% accuracy and last-cycle persistence achieved 91.24%. The CNN confusion
+matrix, with actual rows and predicted columns ordered as classes 0 and 1, is
+`[[421, 109], [13, 633]]`. This run does not establish an accuracy advantage over
+the persistence baseline.
+
+This is a fresh dataset, not a re-split of the original paper's unavailable data.
+The original training implementation was unavailable, so the CNN was reconstructed
+from the manuscript, with explicit `same` padding in both convolutions. Training
+used fresh weights, seed 42, Adam at learning rate 0.001, batch size 32, and exactly
+10 epochs. The final epoch was evaluated without checkpoint selection or seed
+search. Training, validation, and test sets contain 9, 3, and 3 whole trajectories;
+no raw input or target row is shared across sets.
+
+Reproduce training from the committed split arrays with Python 3.12:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements-reproduce.txt
+python evaluate_trajectory_cnn.py --data qec_dataset --output reproduced_results
+```
+
+The output directory must not already exist. The committed reference files remain
+in `cnn_results/`; new runs go into the ignored `reproduced_results/` directory.
+`qec_dataset/README.txt` and `manifest.json` describe the dataset-generation step,
+so their `model_trained=false` statement is historical. The completed evaluation
+is recorded separately in `cnn_results/`.
+
+The dataset manifest records file/source SHA-256 hashes; the evaluation metrics
+record the training-script and dataset-manifest hashes. `artifact_sha256.json`
+also lists SHA-256 hashes for every committed reference artifact.
+
+Only three independent test trajectories are available. Overlapping windows
+within each split are correlated. Labels indicate a syndrome-rate threshold,
+not decoded logical failure; each cycle prepares a fresh quantum state.
 
 ## QEC dataset with trajectory-disjoint splits
 
@@ -12,7 +73,7 @@ Generate a fresh dataset from the existing five-qubit bit-flip syndrome circuit:
 
 ```bash
 python -m pip install -r requirements-qec.txt
-python generate_qec_dataset.py --output qec_dataset
+python generate_qec_dataset.py --output qec_dataset_regenerated
 python -m unittest discover -s tests
 ```
 
@@ -52,9 +113,9 @@ measurement of decoded logical failure. Each circuit invocation prepares a
 fresh state; temporal dependence comes from drifting noise.
 
 This is a new 6,000-cycle dataset, not the paper's unavailable 5,765-cycle data.
-It has 5,880 windows: 3,528 train, 1,176 validation, and 1,176 test. No CNN is
-trained by this generator. Retrain from fresh weights using only validation for
-tuning before reporting new held-out accuracy; the old 98.3% does not apply.
+It has 5,880 windows: 3,528 train, 1,176 validation, and 1,176 test. The generator
+does not train a CNN; use `evaluate_trajectory_cnn.py` for that step. The completed
+reference evaluation is described above. The old 98.3% does not apply.
 Overlapping windows within each split are correlated, and only three independent
 trajectories are held out for testing.
 
